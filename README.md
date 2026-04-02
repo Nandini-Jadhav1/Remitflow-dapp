@@ -3,10 +3,10 @@
 > Instant international payments in 3-5 seconds with near-zero fees
 
 ## 🌐 Live Demo
-https://stellar-remitflow-cross-border-paym.vercel.app/
+https://stellar-remitflow-cross-border-payments-m5h5344yz.vercel.app/
 
 ## 🎥 Demo Video
-[Watch Demo]https://www.loom.com/share/fa59b794df424d98bacfed64b59435e5
+[Watch Demo]https://www.loom.com/share/48c0f836b0ca4f318b314c9d92fe9331
 
 ## 📋 Overview
 RemitFlow is a web app that lets anyone send money internationally
@@ -36,7 +36,7 @@ npm start
 
 
 ## 📊 User Feedback
-[View Feedback Sheet](https://docs.google.com/spreadsheets/...)
+[View Feedback Sheet]https://docs.google.com/forms/d/e/1FAIpQLSdL-BiRPy22kKXl-sDsVY6c0QeUh-duUW8z7_QTkhRGHj8pTw/viewform?usp=publish-editor
 
 ## 🏗️ Architecture
 See [ARCHITECTURE.md](./ARCHITECTURE.md)
