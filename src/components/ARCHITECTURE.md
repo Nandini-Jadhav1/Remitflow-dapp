@@ -47,3 +47,5 @@ React Frontend (Vercel)
 - No private keys stored anywhere
 - All signing done locally in Freighter
 - Non-custodial — app never touches user funds
+
+### Updated for Level 5 submission
