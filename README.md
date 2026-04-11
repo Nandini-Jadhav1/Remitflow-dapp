@@ -72,6 +72,7 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md)
 | Harshal Jagdale | harshaljagdale40@gmail.com | Show exchange rate before sending | [a3b970a](https://github.com/Nandini-Jadhav1/Remitflow-dapp/commit/a3b970a) |
 | Shubham Golekar | shubhamgolekar62021@gmail.com | Add USDC payment option | [a89d93b](https://github.com/Nandini-Jadhav1/Remitflow-dapp/commit/a89d93b) |
 | Dnyaneshwari Badhe | dnyaneshwaribadhe2323@gmail.com | Add success screen after payment | [834be6b](https://github.com/Nandini-Jadhav1/Remitflow-dapp/commit/834be6b) |
+|Vikas Dhanavade|GAUHSW34K5KW7JLOGH2X2JROJXG2DXYIE7NREBTMCHAF7DYK5Y7YBSKX | vikasdhanavade2141@gmail.com |but adding more user-focused features and improving scalability would make it even more powerful.| ⭐⭐⭐⭐⭐ |
 
 ### ✅ Changes Made Based on Feedback:
 - [x] Add live exchange rate preview → [commit](https://github.com/Nandini-Jadhav1/Remitflow-dapp/commit/a3b970a)
