@@ -258,22 +258,20 @@ export const sendPathPayment = async (destination, amount, useUSDC) => {
   const res = await server.submitTransaction(signedTransaction);
   return res.hash;
 };
-//level 6 //
-// ── ADVANCED FEATURE: Fee Bump (Fee Sponsorship) ──
+// ── LEVEL 6: Fee Bump Transaction ──
 export const sendWithFeeBump = async (destination, amount) => {
   const addressObj = await getAddress();
   if (addressObj.error) throw new Error(addressObj.error.message);
   const sourcePublicKey = addressObj.address;
   const sourceAccount = await server.loadAccount(sourcePublicKey);
 
-  // Inner transaction — the actual payment
   const innerTx = new StellarSdk.TransactionBuilder(sourceAccount, {
     fee: StellarSdk.BASE_FEE,
     networkPassphrase,
   })
     .addOperation(
       StellarSdk.Operation.payment({
-        destination: destination,
+        destination,
         asset: StellarSdk.Asset.native(),
         amount: amount.toString(),
       })
@@ -281,29 +279,22 @@ export const sendWithFeeBump = async (destination, amount) => {
     .setTimeout(30)
     .build();
 
-  // Sign inner transaction
-  const signedInner = await signTransaction(innerTx.toXDR(), {
-    networkPassphrase,
-  });
+  const signedInner = await signTransaction(innerTx.toXDR(), { networkPassphrase });
   if (signedInner.error) throw new Error(signedInner.error.message);
 
-  // Fee Bump wraps the inner tx — sponsor pays the fee
-  // In production: sponsor account signs the fee bump
-  // For testnet MVP: sender sponsors their own fee (demonstrates concept)
-  const feeBumpTx = StellarSdk.TransactionBuilder.buildFeeBumpTransaction(
-    sourcePublicKey,           // fee source (sponsor)
-    (parseInt(StellarSdk.BASE_FEE) * 10).toString(), // higher fee
-    StellarSdk.TransactionBuilder.fromXDR(
-      signedInner.signedTxXdr,
-      networkPassphrase
-    ),
+  const innerTxSigned = StellarSdk.TransactionBuilder.fromXDR(
+    signedInner.signedTxXdr,
     networkPassphrase
   );
 
-  // Sign fee bump
-  const signedFeeBump = await signTransaction(feeBumpTx.toXDR(), {
-    networkPassphrase,
-  });
+  const feeBumpTx = StellarSdk.TransactionBuilder.buildFeeBumpTransaction(
+    sourcePublicKey,
+    (parseInt(StellarSdk.BASE_FEE) * 10).toString(),
+    innerTxSigned,
+    networkPassphrase
+  );
+
+  const signedFeeBump = await signTransaction(feeBumpTx.toXDR(), { networkPassphrase });
   if (signedFeeBump.error) throw new Error(signedFeeBump.error.message);
 
   const finalTx = StellarSdk.TransactionBuilder.fromXDR(
