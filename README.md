@@ -86,3 +86,39 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md)
 - [ ] Add transaction history page
 - [ ] Mobile responsive improvements
 - [ ] USDC support on mainnet
+
+## 📊 Metrics Dashboard
+Click **📊 Metrics** button in navbar after connecting wallet.
+
+Live tracking:
+- Total users onboarded (30+)
+- Total transactions on Stellar Testnet
+- Total XLM volume sent
+- Daily active users
+
+[View on Stellar Explorer](https://stellar.expert/explorer/testnet)
+
+## ⚡ Advanced Feature — Fee Sponsorship (Fee Bump)
+**Implementation:** `sendWithFeeBump()` in `src/components/Freighter.js`
+
+How it works:
+- Sender builds inner payment transaction
+- Fee Bump envelope wraps the inner transaction  
+- Sender sponsors ALL network fees
+- Recipient needs ZERO XLM balance to receive
+
+[View commit](https://github.com/Nandini-Jadhav1/Remitflow-dapp/commit/834be6b)
+
+## 🔒 Security Checklist
+[View SECURITY.md](./SECURITY.md)
+
+## 📖 User Guide
+[View USER_GUIDE.md](./USER_GUIDE.md)
+
+## 🌍 Community Contribution
+[View Tweet about RemitFlow](https://x.com/jadhav_nan99910/status/2045021733607117138?s=20)
+
+## 📈 Data Indexing
+Stellar Horizon API used for transaction indexing.
+Endpoint: `https://horizon-testnet.stellar.org/accounts/{address}/payments`
+Dashboard: Built into app — click Metrics button after connecting.
